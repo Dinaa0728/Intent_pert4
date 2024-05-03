@@ -1,6 +1,7 @@
 package com.example.intent
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +12,20 @@ class PageActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_page2)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val textDisplay = findViewById<TextView>(R.id.textDisplay)
+
+        // Ambil Intent dari activity sebelumnya
+        val intent = intent
+
+        // meriksa apakah Intent memiliki data
+        if (intent.hasExtra("EXTRA_MESSAGE")) {
+            // Dapatkan data dari Intent
+            val message = intent.getStringExtra("EXTRA_MESSAGE")
+
+            // Tampilkan data yang diterima
+            textDisplay.text = message
         }
+
     }
 }

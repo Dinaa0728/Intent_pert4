@@ -37,6 +37,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
                 //awal halaman dan tujuan
                 val intentExplicit = Intent(this@HomeActivity,
                     PageActivity2::class.java)
+                intentExplicit.putExtra("EXTRA_MESSAGE", "ini adalah pesan dari HomeActivity!")
 
                 //run intent
                 startActivity(intentExplicit)
